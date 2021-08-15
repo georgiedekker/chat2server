@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "nodemon server.js",
-    "staging":"node server.js"
+    "build":"node server.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
