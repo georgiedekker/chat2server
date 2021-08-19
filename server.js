@@ -11,7 +11,8 @@ const app = express();
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
 const url = process.env.DB_URL
-app.use(cors({origin: ['http://localhost:3000', 'http://localhost:8080', url, 'cors-anywhere.herokuapp.com:3000', 'cors-anywhere.herokuapp.com:8080'],
+const port = process.env.PORT || 3000
+app.use(cors({origin: ['http://localhost:'+port, 'http://localhost:8080', url, 'cors-anywhere.herokuapp.com:'+port, 'cors-anywhere.herokuapp.com:8080'],
 optionsSuccessStatus: 200 }));
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
@@ -171,8 +172,8 @@ function newUser(userName){
             };
 
 
-http.listen(process.env.PORT || 3000, function() {
-              console.log('listening on 3000 http')
+http.listen(port, function() {
+              console.log('listening on '+port+' http')
             })
 // app.listen(3000, function() {
 //               console.log('listening on 3000 app')
